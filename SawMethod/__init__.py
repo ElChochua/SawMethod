@@ -10,20 +10,6 @@ class Saw:
         self.criterios = criterios
         self.costos = costos
         self.pesos = pesos
-    def test(self):
-        costos =np.array(["C3"])
-        criterios = np.array(["C1", "C2", "C3", "C4"])
-        alternativas = np.array(["A1", "A2", "A3", "A4", "A5"])
-        data = np.array([[4,3,5,4],
-                         [2,4,3,3],
-                         [4,4,2,3],
-                         [4,3,4,3],
-                         [5,4,3,5]])
-        tabla = pd.DataFrame (data, columns=criterios, index=alternativas)
-        for i in range(self.cantidad_Alternativas):
-            for j in range(self.cantidad_Criterios):
-                if np.isin(tabla.columns[j], costos):
-                    print(tabla.values[i][j])
 
     def retTablaFormateada(self)->pd.DataFrame:
         return  pd.DataFrame(self.datos, columns=self.criterios, index=self.alternativas)
