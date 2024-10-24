@@ -28,7 +28,7 @@ class Saw:
     def ponderar(self, pesos: numpy.ndarray, tabla)->numpy.ndarray:
         tabla_Ponderada = np.zeros(self.cantidad_Alternativas, dtype=float)
         for i in range(self.cantidad_Alternativas):
-            tabla_Ponderada[i] = np.sum(pesos * tabla[i])
+            tabla_Ponderada[i] = np.sum((pesos) * (tabla[i]))
         return tabla_Ponderada
 
     def calcular(self):

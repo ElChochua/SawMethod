@@ -13,14 +13,6 @@ class SawModel(BaseModel):
     criterios: list
     costos: list
     pesos: list
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
 @app.post("/saw")
 async def saw(modelo: SawModel):
     saw = Saw(int(modelo.cantidad_Criterios),int(modelo.cantidad_Alternativas),np.array(modelo.datos),
@@ -35,6 +27,7 @@ async def upload(file: UploadFile = File(...)):
     saw = Saw(int(datos_Procesados["cantidad_Criterios"]),int(datos_Procesados["cantidad_Alternativas"]),
               np.array(datos_Procesados["datos"]),np.array(datos_Procesados["alternativas"]),
               np.array(datos_Procesados["criterios"]),np.array(datos_Procesados["costos"]),
+
               np.array(datos_Procesados["pesos"]))
     valor = saw.calcular()
     return valor, "message: " + "Mejor alternativa: " + valor.idxmax()["Ranking"] + " con un valor de: " + str(valor.max()["Ranking"])
